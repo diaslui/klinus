@@ -5,7 +5,7 @@ PORT = 1883
 TOPIC = 'iot/dev'
 
 def on_connect(client, userdata, flags, rc):
-    print("\033[0;32m connected in mqtt broker.\n CODE :", rc + " \033[0m")
+    print("\033[0;32mconnected in mqtt broker.\nCODE :", str(rc) + " \033[0m")
     client.subscribe(TOPIC)
 
 def on_message(client, userdata, msg):
