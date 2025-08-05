@@ -18,12 +18,47 @@
  */
 
 
-#include <config.hpp>
+//#include <config.hpp>
+#include <IRremote.hpp>
+#include <WiFi.h>
+
+
+const char* ssid = "yourNetworkName";
+const char* password = "yourNetworkPassword";
+
+const int sPin = 4;
+
+bool connectToWifi(char *ssid, char *password){
+
+  WiFi.begin(ssid, password);
+  unsigned long startAttemptTime = millis();
+  while (WiFi.status() != WL_CONNECTED && millis() - startAttemptTime < 3000) {
+      delay(100);
+  }
+  return WiFi.status() == WL_CONNECTED;
+
+};
+
+bool emitIRaw(uint16_t rawData[], size_t length) {
+  IrSender.sendRaw(rawData, length, 38);
+  return true;
+}
 
 int SERVER_MODE = true;
 
 
 void setup(){
+  Serial.begin(115200);
+  IrSender.begin(sPin); 
+
+  if (SERVER_MODE){
+
+    WiFi.mode(WIFI_STA);
+    connectToWifi(ssid, password);
+
+    return;
+  }
+    Serial.println("Starting in Local Mode (DEV)");
 
 
 }
@@ -31,9 +66,9 @@ void setup(){
 void loop(){
 
     if (SERVER_MODE){
-        Serial.printf('Server Mode');
+        Serial.println("Server Mode");
     }else{
-        Serial.printf('Local Mode');
+        Serial.println("Local Mode");
 
     }
 
