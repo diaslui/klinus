@@ -26,52 +26,105 @@
 const char* ssid = "yourNetworkName";
 const char* password = "yourNetworkPassword";
 
-const int sPin = 4;
-
-bool connectToWifi(char *ssid, char *password){
-
-  WiFi.begin(ssid, password);
-  unsigned long startAttemptTime = millis();
-  while (WiFi.status() != WL_CONNECTED && millis() - startAttemptTime < 3000) {
-      delay(100);
-  }
-  return WiFi.status() == WL_CONNECTED;
+namespace pinSettings {
+  const int emmiterPin = 4;
 
 };
+
+namespace deviceStats {
+
+  unsigned long bootTimestamp;
+  const bool SERVER_MODE = true;
+
+};
+
+namespace irCodes {
+  
+  uint16_t power[];
+  uint16_t upTemperature[][32];
+  uint16_t downTemperature[][32];
+
+};
+
+
 
 bool emitIRaw(uint16_t rawData[], size_t length) {
   IrSender.sendRaw(rawData, length, 38);
   return true;
 }
 
-int SERVER_MODE = true;
 
 
 void setup(){
   Serial.begin(115200);
-  IrSender.begin(sPin); 
+  deviceStats::bootTimestamp = millis();
+  IrSender.begin(pinSettings::emmiterPin); 
 
   if (SERVER_MODE){
 
     WiFi.mode(WIFI_STA);
     connectToWifi(ssid, password);
+  }else{
 
-    return;
-  }
     Serial.println("Starting in Local Mode (DEV)");
+
+  }
+}
+
+
+bool allowedInterval(){
+
+
 
 
 }
 
-void loop(){
 
-    if (SERVER_MODE){
-        Serial.println("Server Mode");
+
+void local_loop(){
+
+
+  bool has_present = true;
+
+  if (has_present){
+
+    if (allowedInterval()){
+
+      // ligar o ar 
+      // liga o ar
+      // 
+      
+
+
     }else{
-        Serial.println("Local Mode");
+
+
 
     }
 
+  }else{
 
-    
+
+
+  }
+
+ /// verificação de presença
+
+
+ // se presente 
+
+
+
+
+
+}
+
+
+void server_loop(){}
+void loop(){
+    if (SERVER_MODE){
+        server_loop()
+    }else{
+        local_loop()
+    }  
 }
