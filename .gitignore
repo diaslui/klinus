@@ -3,3 +3,5 @@
 __pycache__
 *.scratch.txt
 *scratch.ino
+firmware/peripheal.ino
+firmware/server.ino
