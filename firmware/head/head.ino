@@ -4,7 +4,7 @@
 
 static const uint8_t peerAddress[] = {0x94, 0xA9, 0x90, 0x96, 0xCE, 0x94};
 const bool DEBUG = true;
-int emissorPin = 4;
+int transmitterPin = 4;
 
 static const uint16_t PowerOnrawData[67] = {
   8930,4420, 580,570, 530,570, 580,570, 530,570,
@@ -33,19 +33,21 @@ int queueValue = 0;
 bool reponseInterpreter(int val){
 
     if (DEBUG){
-        Serial.print("Interpreter Solv -> ");
+        Serial.println("Interpreter Solv -> ");
 
     }
 
     if (val == 111){
         IrSender.sendRaw(PowerOnrawData, 67, 38); 
+        return true;
     }
     else if (val == 999)
     {
         IrSender.sendRaw(PowerOffrawData, 67, 38); 
-
+        return true;
     }
-    
+
+    return false;
 
 }
 
@@ -86,16 +88,16 @@ void setup()
 {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
-  IrSender.begin(sPin); 
+  IrSender.begin(transmitterPin); 
 
   if (DEBUG)
   {
     Serial.println("****** Welcome To Klinus ********");
     Serial.println("---- You are in Debug Mode. ----");
     Serial.println("+++ AS: HEAD FIRMWARE +++");
-    Serial.print("This device MAC Addr is: ")
+    Serial.print("This device MAC Addr is: ");
         Serial.println(WiFi.macAddress());
-    Serial.print("** Lets begin =) **")
+    Serial.print("** Lets begin =) **");
   }
 
   if (esp_now_init() != ESP_OK)
