@@ -1,0 +1,98 @@
+#include <WiFi.h>
+#include <esp_now.h>
+
+uint8_t peerAddress[] = {0x94, 0xA9, 0x90, 0x98, 0xD8, 0x64};
+bool DEBUG = true;
+int queueValue = 0;
+
+void onReceive(const esp_now_recv_info *info, const uint8_t *data, int len)
+{
+  int rcvdVal;
+  memcpy(&rcvdVal, data, sizeof(rcvdVal));
+
+  if (DEBUG)
+  {
+    char macStr[18];
+    snprintf(macStr, sizeof(macStr), "%02X:%02X:%02X:%02X:%02X:%02X",
+             info->src_addr[0], info->src_addr[1], info->src_addr[2],
+             info->src_addr[3], info->src_addr[4], info->src_addr[5]);
+
+    Serial.printf("(onReceive) New msg from: %s → %d\n", macStr, rcvdVal);
+  }
+}
+
+void onSent(const uint8_t *mac_addr, esp_now_send_status_t status)
+{
+  if (DEBUG)
+  {
+    Serial.print("(onsent) Msg to -> ");
+    for (int i = 0; i < 6; i++)
+    {
+      Serial.printf("%02X", mac_addr[i]);
+      if (i < 5)
+        Serial.print(":");
+    }
+    Serial.print(" | Status: ");
+    Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Sucess" : "Fail");
+  }
+}
+
+void setup()
+{
+  Serial.begin(115200);
+  WiFi.mode(WIFI_STA);
+
+  if (DEBUG)
+  {
+    Serial.println("****** Welcome To Klinus ********");
+    Serial.println("---- You are in Debug Mode. ----");
+    Serial.println("+++ AS: RADIO FIRMWARE +++");
+    Serial.print("This device MAC Addr is: ")
+        Serial.println(WiFi.macAddress());
+    Serial.print("** Lets begin =) **")
+  }
+
+  if (esp_now_init() != ESP_OK)
+  {
+    Serial.println("CRITICAL ERROR: Start ESP32.");
+    return;
+  }
+
+  esp_now_register_recv_cb(onReceive);
+  esp_now_register_send_cb(onSent);
+
+  esp_now_peer_info_t peerInfo = {};
+  memcpy(peerInfo.peer_addr, peerAddress, 6);
+  peerInfo.channel = 0;
+  peerInfo.encrypt = false;
+
+  if (esp_now_add_peer(&peerInfo) != ESP_OK)
+  {
+    Serial.println("CRITICAL ERROR: Add Peer.");
+    return;
+  }
+
+  Serial.println("Network Ready. (Receiv and Send)");
+}
+
+void loop()
+{
+
+  if (queueValue != 0)
+  {
+    esp_err_t result = esp_now_send(peerAddress, (uint8_t *)&queueValue, sizeof(queueValue));
+
+    if (result == ESP_OK)
+    {
+      queueValue = 0;
+      if (DEBUG)
+      {
+        Serial.printf("New MSG Sended (loop stage) : %d\n", queueValue);
+      }
+    }
+    else if (DEBUG)
+    {
+      Serial.println("CRITICAL ERROR: Send Msg to peer (loop stage)");
+    }
+  }
+}
