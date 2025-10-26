@@ -21,5 +21,5 @@ class Institution(BaseModel):
 
 
 class Campus(BaseModel):
-    address = models.OneToOneField(Address)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE)
     name = models.CharField(null=False, blank=False, max_length=80)

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>klinus</title>
+    <title>Klinus:  Automação e Economia Energética para Instituições Públicas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,18 +31,22 @@
         }
     </script>
     <style>
-        .grid-bg {
+
+
+   
+        .bg-waves {
             background-image:
-                linear-gradient(rgba(59, 131, 246, 0.091) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 131, 246, 0.193) 1px, transparent 1px);
-            background-size: 50px 50px;
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'><path fill='%23ffffff' fill-opacity='0.06' d='M0 20 Q30 0 60 20 T120 20 V40 H0z'/></svg>"),
+                linear-gradient(180deg, rgba(59,131,246,0.06), transparent 60%);
+            background-size: 120px 40px, auto;
+        }
+        .dark .bg-waves {
+            background-image:
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'><path fill='%23000000' fill-opacity='0.06' d='M0 20 Q30 0 60 20 T120 20 V40 H0z'/></svg>"),
+                linear-gradient(180deg, rgba(29,78,216,0.04), rgba(10,13,18,0.06));
         }
 
-        .dark .grid-bg {
-            background-image:
-                linear-gradient(rgba(59, 131, 246, 0.061) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 131, 246, 0.091) 1px, transparent 1px);
-        }
+       
 
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
@@ -61,22 +65,19 @@
     </style>
 </head>
 
-<body class="bg-white dark:bg-bgdark-900 text-gray-900 dark:text-white transition-colors duration-300">
-    <div class="grid-bg min-h-screen">
+<body class=" dark:bg-bgdark-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <div class="bg-waves min-h-screen">
         <header
             class="fixed top-0 w-full bg-white/80 dark:bg-bgdark-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50">
             <nav class="container mx-auto px-6 py-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-2">
-                        <div
-                            class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">K</span>
-                        </div>
+            
                         </div>
 
                     <div class="hidden md:flex items-center space-x-8">
 
-                        <a href="" class="hover:text-primary-600 transition-colors">Login</a>
+                        <a href="" class="hover:text-primary-600 transition-colors">Documentação</a>
                         <a href="#about" class="hover:text-primary-600 transition-colors">Sobre</a>
                         <a href="" class="hover:text-primary-600 transition-colors">Klinus na sua Instituição</a>
                         <a href="" class="hover:text-primary-600 transition-colors">Diário de Bordo</a>
@@ -112,12 +113,10 @@
                     <div>
                         <h1 class="text-5xl lg:text-6xl font-bold mb-6">
                             <span class="gradient-text">Klinus:</span><br>
-                            Automaço e Economia Energética para Instituições Públicas
+                            Automação e Economia Energética para Instituições Públicas
                         </h1>
                         <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.
+                            Um sistema inteligente desenvolvido no IFPI – Campus São Raimundo Nonato, que detecta a presença de pessoas nas salas de aula e controla automaticamente os aparelhos de ar-condicionado, evitando que fiquem ligados em ambientes vazios.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
                             <a href=""
@@ -126,7 +125,7 @@
                             </a>
                             <a href="#funcionalidades"
                                 class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white px-8 py-4 rounded-xl font-medium transition-colors text-center">
-                                Klinus na sua Instituição </a>
+                                Traga o Klinus para sua Instituição </a>
                         </div>
                     </div>
                     <div class="relative">
@@ -145,7 +144,8 @@
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold mb-4">Sobre o Projeto</h2>
                     <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        Desenvolvido por uma instituição pública para instituições públicas
+                        Desenvolvido por uma instituição pública para instituições públicas, nosso projeto propõe o desenvolvimento de um protótipo IoT que integra sensores de presença, controle por infravermelho e comunicação via MQTT para tornar o uso de energia mais eficiente e sustentável.
+Tudo isso com hardware baseado no ESP32 e detecção precisa de ocupação por meio do sensor de radar LD2410B.
                     </p>
                 </div>
 
@@ -153,36 +153,31 @@
                     <div>
                         <h3 class="text-2xl font-bold mb-6 text-primary-600">O Problema</h3>
                         <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                           Em muitas salas de aula, os aparelhos de ar-condicionado permanecem ligados mesmo quando o ambiente está vazio.
+Essa falta de controle causa grande desperdício de energia, eleva os custos de manutenção e aumenta o impacto ambiental.
+No IFPI, como em várias instituições públicas, isso representa uma perda constante de recursos que poderiam ser melhor aproveitados em educação e infraestrutura.
                         </p>
 
                         <h3 class="text-2xl font-bold mb-6 text-primary-600">Nossa Solução</h3>
                         <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                           Desenvolvemos um sistema automatizado de controle de ar-condicionado, que detecta a presença de pessoas e liga ou desliga os aparelhos de forma inteligente.
+Utilizando sensores de radar LD2410B, ESP32 e comunicação via MQTT, o sistema garante eficiência energética, conforto térmico e sustentabilidade — tudo gerenciado de forma local, sem depender de conexão externa.
                         </p>
 
                         <div class="grid grid-cols-2 gap-6">
                             <div class="text-center p-4 bg-white dark:bg-gray-700 rounded-xl">
-                                <div class="text-3xl font-bold text-primary-600 mb-2">60%</div>
-                                <div class="text-sm text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet.</div>
+                                <div class="text-3xl font-bold text-primary-600 mb-2">20%</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-300">Eficiência Energética</div>
                             </div>
                             <div class="text-center p-4 bg-white dark:bg-gray-700 rounded-xl">
                                 <div class="text-3xl font-bold text-primary-600 mb-2">24/7</div>
-                                <div class="text-sm text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet.</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-300">Monitoramento Contínuo</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="space-y-6">
-                        <img src="{% static 'images/ifpisrn-ref.jpg' %}" alt="Sensor de Presença"
+                        <img src="{% static 'images/devlopmentpict.jpg' %}" alt="Sensor de Presença"
                             class="rounded-xl shadow-lg w-full">
                     </div>
                 </div>
@@ -192,9 +187,9 @@
         <section class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4">Por que Klinus?</h2>
+                    <h2 class="text-4xl font-bold mb-4">Por Que Isso é Importante</h2>
                     <p class="text-xl text-gray-600 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet
+                        A implementação do Klinus não é apenas uma questão de conforto, mas uma necessidade urgente diante dos desafios atuais.
                     </p>
                 </div>
 
@@ -209,11 +204,10 @@
                                 </path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-4">Lorem ipsum dolor sit amet</h3>
+                        <h3 class="text-xl font-bold mb-4">Redução do Desperdício e Sustentabilidade</h3>
                         <p class="text-gray-600 dark:text-gray-300">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam culpa voluptates
-                            aliquid fugiat esse totam quas error minima minus distinctio harum soluta et repudiandae,
-                            exercitationem ad ab in molestias!
+                           Ar-condicionados frequentemente ficam ligados em salas vazias. A implementação do Klinus contribui para a sustentabilidade das instituições, promovendo o uso consciente da energia e a redução da pegada de carbono.
+
                         </p>
                     </div>
 
@@ -227,32 +221,13 @@
                                 </path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-4">Lorem ipsum dolor sit amet</h3>
+                        <h3 class="text-xl font-bold mb-4">Economia Real</h3>
                         <p class="text-gray-600 dark:text-gray-300">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam culpa voluptates
-                            aliquid fugiat esse totam quas error minima minus distinctio harum soluta et repudiandae,
-                            exercitationem ad ab in molestias!
+                            A implementação do Klinus pode resultar em uma economia significativa na conta de energia elétrica das instituições, reduzindo custos operacionais e permitindo a realocação de recursos para outras áreas.
                         </p>
                     </div>
 
-                    <div
-                        class="card-hover bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                        <div
-                            class="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">Lorem ipsum dolor sit amet</h3>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam culpa voluptates
-                            aliquid fugiat esse totam quas error minima minus distinctio harum soluta et repudiandae,
-                            exercitationem ad ab in molestias!
-                        </p>
-                    </div>
-
+                
                     <div
                         class="card-hover bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
                         <div
@@ -262,48 +237,13 @@
                                     d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-4">Lorem ipsum dolor sit amet</h3>
+                        <h3 class="text-xl font-bold mb-4">Educação e Tecnologia</h3>
                         <p class="text-gray-600 dark:text-gray-300">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam culpa voluptates
-                            aliquid fugiat esse totam quas error minima minus distinctio harum soluta et repudiandae,
-                            exercitationem ad ab in molestias!
+                            A implementação do Klinus promove a educação e a conscientização sobre o uso eficiente da energia, capacitando os usuários a adotarem práticas mais sustentáveis e tecnológicas em seu dia a dia.
                         </p>
                     </div>
 
-                    <div
-                        class="card-hover bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                        <div
-                            class="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
-                                </path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">Lorem ipsum dolor sit amet</h3>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam culpa voluptates
-                            aliquid fugiat esse totam quas error minima minus distinctio harum soluta et repudiandae,
-                            exercitationem ad ab in molestias!
-                        </p>
-                    </div>
-
-                    <div
-                        class="card-hover bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                        <div
-                            class="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-xl flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">Lorem ipsum dolor sit amet</h3>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam culpa voluptates
-                            aliquid fugiat esse totam quas error minima minus distinctio harum soluta et repudiandae,
-                            exercitationem ad ab in molestias!
-                        </p>
-                    </div>
+               
                 </div>
             </div>
         </section>
@@ -315,9 +255,7 @@
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold mb-4">Cronograma do Projeto</h2>
                     <p class="text-xl text-gray-600 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aliquam culpa voluptates aliquid
-                        fugiat esse totam quas error minima minus distinctio harum soluta et repudiandae, exercitationem
-                        ad ab in molestias!
+                        Acompanhe as principais etapas e marcos do desenvolvimento do Klinus.
                     </p>
                 </div>
 
@@ -326,11 +264,24 @@
                         <div class="flex items-center space-x-4">
                             <div class="w-4 h-4 bg-primary-600 rounded-full flex-shrink-0"></div>
                             <div class="flex-1 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                                <h3 class="font-bold text-lg mb-2">Maio - Junho 2025</h3>
+                                <p class="text-gray-600 dark:text-gray-300">Planejamento e levantamento de requisitos</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-4 h-4 bg-primary-600 rounded-full flex-shrink-0"></div>
+                            <div class="flex-1 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
                                 <h3 class="font-bold text-lg mb-2">Junho - Julho 2025</h3>
-                                <p class="text-gray-600 dark:text-gray-300">Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Labore culpa ipsum odio officiis veritatis voluptatum deleniti
-                                    earum vel non in eius esse iusto beatae, autem commodi illum voluptate tempora
-                                    sequi.</p>
+                                <p class="text-gray-600 dark:text-gray-300">Desenvolvimento de hardware</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-4 h-4 bg-primary-600 rounded-full flex-shrink-0"></div>
+                            <div class="flex-1 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                                <h3 class="font-bold text-lg mb-2">Agosto - Outubro 2025</h3>
+                                <p class="text-gray-600 dark:text-gray-300">Desenvolvimento de Software, integração e validação</p>
                             </div>
                         </div>
 
@@ -338,10 +289,7 @@
                             <div class="w-4 h-4 bg-primary-600 rounded-full flex-shrink-0"></div>
                             <div class="flex-1 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
                                 <h3 class="font-bold text-lg mb-2">Novembro 2025</h3>
-                                <p class="text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Nulla in fuga deserunt quidem. Rem eos libero itaque sint
-                                    excepturi quod corporis recusandae suscipit aut accusantium odit, nulla esse
-                                    adipisci ex?</p>
+                                <p class="text-gray-600 dark:text-gray-300">Apresentação dos resultados</p>
                             </div>
                         </div>
                     </div>
@@ -376,14 +324,11 @@
                 <div class="grid md:grid-cols-4 gap-8">
                     <div>
                         <div class="flex items-center space-x-2 mb-4">
-                            <div
-                                class="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
-                                <span class="text-white font-bold">K</span>
-                            </div>
                             <span class="text-xl font-bold">Klinus</span>
                         </div>
                         <p class="text-gray-400">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                           Automação e Economia Energética para Instituições Públicas
+                        </p>
                     </div>
 
                     <div>

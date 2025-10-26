@@ -1,0 +1,36 @@
+site_name: Klinus
+site_description: Projeto de automação e sustentabilidade com IoT desenvolvido no IFPI – Campus São Raimundo Nonato.
+site_author: Diaslui
+repo_url: https://github.com/diaslui/klinus
+repo_name: GitHub
+theme:
+  name: material
+  language: pt
+  palette:
+    - scheme: default
+      primary: teal
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+    - scheme: slate
+      primary: teal
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - Início: index.md
+  - Firmware:
+      - Dispositivos: firmware/dispositivos.md
+  - Servidor:
+      - Instalação: server/instalacao.md
+
