@@ -2,7 +2,9 @@
 #include <IRremote.hpp>
 #include <esp_now.h>
 
-static const uint8_t peerAddress[] = {0x94, 0xA9, 0x90, 0x96, 0xCE, 0x94};
+
+uint8_t peerAddress[] = {0x94, 0xA9, 0x90, 0x98, 0xD8, 0x64};
+
 const bool DEBUG = true;
 int transmitterPin = 4;
 
