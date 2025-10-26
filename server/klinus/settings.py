@@ -1,14 +1,16 @@
 import os
 from pathlib import Path
+import prettyconf
+
+config = prettyconf.Configuration()
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-)w+b2qy9kh+fa744evserm=9pq=)k+rnh)&(rcb=au8s@2f*h+'
+SECRET_KEY = config("SECRET_KEY", default="django-insecure$@")
+DEBUG = config("DEBUG", default=False, cast=bool)
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 INSTALLED_APPS = [
     'apps.core',
@@ -50,13 +52,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'klinus.wsgi.application'
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': config('DB_ENGINE', default='django.db.backends.postgresql'),
+            'NAME': config('DB_NAME', default='klinus'),
+            'USER': config('DB_USER', default='klinus_user'),
+            'PASSWORD': config('DB_PASSWORD', default='klinus_password'),
+            'HOST': config('DB_HOST', default='localhost'),
+            'PORT': config('DB_PORT', default='5432'),
+        }
+    }
 
 
 
