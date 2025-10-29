@@ -62,9 +62,9 @@ if DEBUG:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': config('DB_ENGINE', default='django.db.backends.postgresql'),
+            'ENGINE': config('DB_ENGINE', default='django.db.backends.mysql'),
             'NAME': config('DB_NAME', default='klinus'),
-            'USER': config('DB_USER', default='klinus_user'),
+            'USER': config('DB_USERNAME', default='klinus_user'),
             'PASSWORD': config('DB_PASSWORD', default='klinus_password'),
             'HOST': config('DB_HOST', default='localhost'),
             'PORT': config('DB_PORT', default='5432'),
